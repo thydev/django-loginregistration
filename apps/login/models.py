@@ -16,12 +16,15 @@ class UserManager(models.Manager):
             errors["first_name"] = "First name should be more than 2 characters"
         if len(postData['last_name']) < 2:
             errors["last_name"] = "Last name should be more than 2 characters"
-            
+        
+        email = postData['email']
         if not email_reg.match(email):
             errors['email'] = "Invalid email address"
         elif User.objects.filter(email=postData['email']).count() > 0:
             errors['email'] = "This email {} is already exist".format(postData['email'])
 
+        password = postData['password']
+        password_confirm = postData['password_confirm']
         if (len(password) < 0):
             errors['password'] = "Please input your password"
         elif not pwd_reg.match(password):

@@ -25,9 +25,9 @@
 <body>
     <div class="container login">
         <h1>Login:</h1>
-        {% if messages %}
+        {% if messages.login %}
         <ul class="messages">
-            {% for message in messages %}
+            {% for message in messages.login %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
