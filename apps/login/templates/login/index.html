@@ -25,10 +25,12 @@
 <body>
     <div class="container login">
         <h1>Login:</h1>
-        {% if messages.login %}
+        {% if messages %}
         <ul class="messages">
-            {% for message in messages.login %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% for message in messages %}
+                {% if message.tags == "login error" %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endif %}
             {% endfor %}
         </ul>
         {% endif %}
@@ -53,7 +55,9 @@
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% if message.tags == "create error" %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endif %}
             {% endfor %}
         </ul>
         {% endif %}
@@ -65,7 +69,7 @@
                 <input name="first_name" type="text" id="firstname" class="form-control mx-sm-3" required>
             </div>
             <div class="form-inline form-group ">
-                <label for="lastname">First name</label>
+                <label for="lastname">Last name</label>
                 <input name="last_name" type="text" id="lastname" class="form-control mx-sm-3" required>
             </div>
             <div class="form-inline form-group ">
