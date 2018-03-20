@@ -25,7 +25,7 @@ def login(request):
             messages.error(request, "Incorrect password.", extra_tags="login")
             return redirect('/')
         messages.success(request, "Successfully logged in !, Welcome {} {}".format(user.first_name, user.last_name))
-        return redirect('/login/sucess')
+        return redirect('/login/success')
 
     return redirect('/')
 
@@ -45,10 +45,10 @@ def create(request):
     # Encript the password by using bscrypt
     password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
     newuser = User.objects.create(first_name = request.POST['first_name'], last_name = request.POST['last_name'], email = request.POST['email'], password = password)
-    # messages.success(request, "Sucessfully logged in!", extra_tags="sucess")
-    messages.success(request, "Sucessfully logged in!")
-    return redirect('/login/sucess')
+    # messages.success(request, "Successfully logged in!", extra_tags="success")
+    messages.success(request, "Successfully logged in!")
+    return redirect('/login/success')
 
-def sucess(request):
-    # Display sucess message
-    return render(request, 'login/sucess.html')
+def success(request):
+    # Display success message
+    return render(request, 'login/success.html')
